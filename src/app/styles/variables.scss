@@ -1,0 +1,11 @@
+$black : #000000;
+$white : #ffffff;
+
+// Mixin
+
+@mixin bgSize($arg) {
+    background-size: $arg!important;
+    -webkit-background-size: $arg!important;
+    -moz-background-size: $arg!important;
+    -o-background-size: $arg!important;
+}

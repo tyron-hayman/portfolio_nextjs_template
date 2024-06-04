@@ -1,0 +1,32 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"hero_text": {
+				"__TYPE__": "FieldContent",
+				"value": "alphabet",
+				"type": "Text"
+			},
+			"hero_subtext": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Tempor sit ut duis mollit in minim reprehenderit labore quis occaecat voluptate laboris do pariatur. Cupidatat est proident ipsum sunt nisi aliquip esse consequat pariatur ullamco ipsum ipsum."
+						}
+					}
+				]
+			},
+			"hero_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			}
+		},
+		"items": []
+	}
+]

@@ -1,0 +1,42 @@
+@use "variables" as v;
+@import "./reset";
+
+// Global
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: v.$black;
+  overflow-x: hidden;
+}
+
+.siteWrapper {
+  position: relative;
+}
+
+// hero
+
+.heroSection {
+  margin-bottom: 300px;
+  h1 {
+    font-size: 14vw;
+    line-height: 11vw;
+  }
+}
+
+// Work
+
+.workContainerWrap {
+  position: sticky;
+  top: 20vh;
+  .work_container {
+    .projectBox {
+      .proImage {
+        @include v.bgSize(cover);
+      }
+    }
+  }
+}
