@@ -22,26 +22,26 @@ type ProjectBox = {
 export default function Work({ hero_text, slices, progress }: Work) {
   const container = useRef(null);
   const screenSize = useScreenSize();
-  const containerSize = screenSize.width * 1.7;
+  const containerSize = 700 * ( slices.length + 1 );
 
   const { scrollYProgress }: any = useScroll({
     target: container,
-    // offset: ["start start", "end end"],
+    offset: ["start start", "end start"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', `-70%`]);
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', `-100%`]);
 
   return (
     <div ref={container} className={`relative`} style={{ height : `${containerSize}px`, position : `relative` }}>
       <div className={`container workContainerWrap`}>
         <motion.div
-          className={`work_container flex items-stretch`}
+          className={`work_container flex justify-between items-center`}
           style={{
             x,
             width : containerSize + "px"
           }}
         >
-          <div className="projectBox rounded-3xl overflow-hidden relative w-[25%] me-[2.5%] h-[60vh]">
+          <div className={`projectBox rounded-3xl overflow-hidden relative w-[600px]`}>
             <h2 className="text-white text-5xl font-normal leading-relaxed">
               {slices[1].primary.content[0].text}
             </h2>
@@ -78,6 +78,11 @@ export default function Work({ hero_text, slices, progress }: Work) {
               })}
             </>
           ) : null}
+          <div className={`projectBox rounded-3xl overflow-hidden relative w-[600px]`}>
+            <h2 className="text-white text-5xl font-normal leading-relaxed">
+              ....and many more through studios such as Marca Studio Inc. and The Bannermen Inc.
+            </h2>
+          </div>
         </motion.div>
       </div>
     </div>
@@ -104,7 +109,7 @@ const ProjectBox = ({ inView, children, width, image, services }: ProjectBox) =>
 
   return (
     <motion.div
-      className={`projectBox rounded-3xl overflow-hidden relative w-[25%] me-[2.5%] h-[60vh]`}
+      className={`projectBox rounded-3xl overflow-hidden relative w-[600px] h-[50vh]`}
       variants={proAnimation}
       initial={`initial`}
       animate={isInView ? "animated" : "initial"}
