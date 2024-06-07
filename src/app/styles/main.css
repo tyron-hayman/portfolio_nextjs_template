@@ -58,7 +58,7 @@ table {
 }
 
 body {
-  background: #000000;
+  background: #0d0d0d;
   overflow-x: hidden;
 }
 
@@ -66,12 +66,20 @@ body {
   position: relative;
 }
 
+.container-lg {
+  width: 1500px;
+}
+
 .heroSection {
   margin-bottom: 300px;
 }
 .heroSection h1 {
-  font-size: 14vw;
-  line-height: 11vw;
+  font-size: 9vw;
+  line-height: 9vw;
+  text-transform: uppercase;
+}
+.heroSection h1 span {
+  color: #ffbb00;
 }
 
 .workContainerWrap {
@@ -83,4 +91,23 @@ body {
   -webkit-background-size: cover !important;
   -moz-background-size: cover !important;
   -o-background-size: cover !important;
+}
+
+.textBlock strong {
+  color: #ffbb00;
+}
+
+.skill .skillsHighlight {
+  bottom: 50%;
+  top: 50%;
+}
+.skill p {
+  color: #0d0d0d;
+}
+.skill:hover .skillsHighlight {
+  bottom: 0%;
+  top: 0%;
+}
+.skill:hover p {
+  color: #ffffff;
 }/*# sourceMappingURL=main.css.map */

@@ -53,8 +53,8 @@ export default function ServicesBlock({ slices }: Services) {
   };
 
   return (
-    <div className="relative py-[50vh] w-full flex justify-center items-center">
-      <div ref={container} className="container">
+    <div className="relative my-[50vh] w-full flex justify-center items-center">
+      <div ref={container} className="container relative z-[2]">
         <motion.div
           className="mb-20"
           variants={slideIn}
@@ -68,7 +68,7 @@ export default function ServicesBlock({ slices }: Services) {
             {slices[3].primary.content}
           </p>
         </motion.div>
-        <div className="md:grid mb-4 md:mb-0 md:grid-cols-2 md:gap-4">
+        <div className="md:grid mb-4 md:mb-0 md:grid-cols-4 md:gap-4">
           {serices.map((item: any, index: number) => {
             return (
               <Service key={`serv${index}`} {...item} animation={slideIn} />
@@ -99,7 +99,7 @@ const Service = ({
       initial={`initial`}
       animate={isInView ? "animated" : "initial"}
     >
-      <h3 className="text-white text-3xl font-bold">{service}</h3>
+      <h3 className="text-white text-2xl font-bold">{service}</h3>
       {monthly ? (
         <>
           <p className="mt-5 text-indigo-300 text-lg font-bold">
@@ -125,7 +125,7 @@ const Service = ({
           </p>
         </>
       )}
-      <p className="text-white text-lg py-7 min-h-[200px]">{content}</p>
+      <p className="text-white text-lg py-7 min-h-[300px]">{content}</p>
       <Dialog>
         <DialogTrigger className="text-white py-2 px-10 text-lg border-indigo-300 border-[1px] border-solid rounded-full transition hover:text-black hover:bg-white">
           {button_text}

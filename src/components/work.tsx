@@ -29,7 +29,7 @@ export default function Work({ hero_text, slices, progress }: Work) {
     offset: ["start start", "end start"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', `-100%`]);
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', `-90%`]);
 
   return (
     <div ref={container} className={`relative`} style={{ height : `${containerSize}px`, position : `relative` }}>

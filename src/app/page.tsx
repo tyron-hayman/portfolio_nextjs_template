@@ -6,10 +6,10 @@ import { createClient } from "@/prismicio";
 import { useEffect, useState, useRef } from "react";
 import Hero from "@/components/hero";
 import Work from "@/components/work";
-import TextBlock from "@/components/textDivider";
+import About from "@/components/about";
+import Experience from "@/components/experience";
 import ServicesBlock from "@/components/services";
 import Loader from "@/components/loader";
-import { useScroll, useTransform } from "framer-motion";
 import { ReactLenis, useLenis } from "lenis/react";
 
 export default function Home() {
@@ -42,9 +42,8 @@ export default function Home() {
         <ReactLenis root options={{ lerp: 0.1, duration: 1.5 }}>
           <main ref={container} className="siteWrapper pb-[200vh] relative">
             <Hero data={pageData} />
-            <Work {...pageData} />
-            <TextBlock content={pageData.slices[2].primary.title} />
-            <ServicesBlock {...pageData} />
+            <About {...pageData} />
+            <Experience {...pageData} />
           </main>
         </ReactLenis>
       )}

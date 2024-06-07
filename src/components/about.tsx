@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/accordion";
 import { Scale } from "lucide-react";
 import splitStringReg from "@/utils/splitString";
+import TextBlock from "./textDivider";
 
 type About = {
   slices?: any;
@@ -29,121 +30,82 @@ type Word = {
   progress?: any;
 };
 
+type Skill = {
+  children?: any;
+  variant?: any;
+};
+
 export default function About({ slices }: About) {
   const container = useRef(null);
-  const avatar_about = useRef(null);
-  const av_isInView = useInView(avatar_about, { once: true });
-  const title = splitStringReg(slices[2].primary.title);
-  const content = splitStringReg(slices[2].primary.content[0].text);
-  let progressNum = 0;
-  let progressEnd = ( title.length + content.length );
+  const titleRef = useRef(null);
+  const inView = useInView(titleRef, { amount : 0.5, once : true });
+  const title = slices[2].primary.title[0].text.split(" ");
+  const skills = slices[2].primary.skills;
 
-  const { scrollYProgress }: any = useScroll({
+  const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start 0.7", "start 0.10"],
+    offset: ["start 0.8", "start 0.3"],
   });
 
-  const g_duration = {
-    duration: 0.5,
-    easings: "easeInOut",
-  };
-
-  const scale: Variants = {
-    initial: {
-      scale: 0,
+  const showVariant : Variants = {
+    initial : {
+      y: 50,
+      opacity: 0
     },
-    animate: {
-      scale: 1,
-      transition: g_duration,
-    },
-  };
+    animated : {
+      y : 0,
+      opacity : 1,
+      transition : {
+        duration : 0.5,
+        easings : [0.22, 1, 0.36, 1]
+      }
+    }
+  }
 
-  const skills = slices[2].primary.skills;
   return (
-    <section
-      className="aboutSection flex flex-wrap mt-40 justify-center"
-    >
-      <motion.div ref={container} className="container flex flex-start flex-wrap mt-[200px] justify-between">
-        <div className=" w-full md:w-4/12 relative">
-          <div className="sticky top-[10%]">
-            <motion.div
-              ref={avatar_about}
-              className="overflow-hidden rounded-full relative w-[250px] aspect-square grayscale mb-10"
-              variants={scale}
-              initial={`initial`}
-              animate={av_isInView ? "animate" : "initial"}
-            >
-              <Image
-                src={slices[2].primary.image.url}
-                alt="Image of me"
-                fill={true}
-                placeholder="blur"
-                blurDataURL={me.src}
-                sizes="100%"
-              />
-            </motion.div>
-            <h2 className="text-7xl font-black text-white leading-snug">
-              About Me
-            </h2>
-          </div>
-        </div>
-        <motion.div className="w-full md:w-7/12">
-          <p className="text-5xl font-bold text-white leading-relaxed mb-10">
-            {title.map((word: string, i: number) => {
-              const start = progressNum / progressEnd;
-              const end = start + ( 1 / progressEnd );
-              progressNum++;
-              return (
-                <Word
-                  key={i}
-                  value={word}
-                  range={[start, end]}
-                  progress={scrollYProgress}
-                />
-              );
-            })}
-          </p>
-          <p className="text-2xl font-normal text-white leading-loose mb-20">
-            {content.map((word: string, j: number) => {
-              const start = progressNum / progressEnd;
-              const end = start + ( 1 / progressEnd );
-              progressNum++;
-              return (
-                <Word
-                  key={j}
-                  value={word}
-                  range={[start, end]}
-                  progress={scrollYProgress}
-                />
-              );
-            })}
-          </p>
-          <p className="text-5xl font-bold text-white leading-relaxed mb-10">
-            What I can do
-          </p>
-          <Accordion type="single" collapsible>
-            {skills.map((skill: any, index: number) => {
-              return (
-                <AccordionItem key={`skill${index}`} value={skill.skill}>
-                  <AccordionTrigger className="text-white text-2xl">
-                    {skill.skill}
-                  </AccordionTrigger>
-                  <AccordionContent className="rounded-2xl bg-indigo-500 p-5">
-                    <p className="text-lg font-normal text-white leading-loose">
-                      {skill.description}
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
-          </Accordion>
-        </motion.div>
-      </motion.div>
+    <section className="aboutSection flex flex-wrap mt-40 justify-center">
+      <div className="container-lg" ref={container}>
+        <motion.h2 ref={titleRef} className="text-amber-50 text-1xl font-normal uppercase" initial="initial" variants={showVariant} animate={inView ? "animated" : "initial"}>About Me</motion.h2>
+        <TextBlock content={slices[2].primary.title[0].text} container={container} />
+      </div>
+      <div className="container-lg pt-60 pb-10">
+        <h2 className="text-rose-50 text-1xl uppercase font-normal">
+          I know some things
+        </h2>
+      </div>
+      <div className="skillsWrap w-full">
+        {skills.map((skill: any, index: number) => {
+          return (
+            <Skill key={index} variant={showVariant}>
+              <div className="bg-[#ffbb00] absolute transition-all w-full z-[1] block skillsHighlight duration-500"/>
+              <div className="container-lg mx-auto flex justify-between items-center relative z-[2]">
+                <h3 className="text-7xl text-amber-50 font-bold uppercase w-full md:w-7/12">
+                  {skill.skill}
+                </h3>
+                <p className="text-sm leading-relaxed text-amber-50 font-bold uppercase w-full md:w-4/12 transition-all duration-500">
+                  {skill.description}
+                </p>
+              </div>
+            </Skill>
+          );
+        })}
+      </div>
     </section>
   );
 }
 
 const Word = ({ value, range, progress }: Word) => {
-  const opacity = useTransform(progress, range, [0.05, 1]);
-  return <motion.span style={{ opacity }}>{value}</motion.span>;
+  const opacity = useTransform(progress, range, [0, 1]);
+  return <motion.span className="inline-block me-[1rem]" style={{ opacity }} dangerouslySetInnerHTML={{ __html : value }}></motion.span>;
 };
+
+const Skill = ({ children, variant } : Skill) => {
+  const skillRef = useRef(null);
+  const inView = useInView(skillRef, { amount : 0.5, once : true })
+  
+  return(
+    <motion.div ref={skillRef} initial="initial" variants={variant} animate={inView ? "animated" : "initial"} className="skill py-4 border-gray-50/10 border-solid border-t-[1px] relative">
+      {children}
+    </motion.div>
+  )
+}

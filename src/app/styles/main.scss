@@ -17,13 +17,21 @@ body {
   position: relative;
 }
 
+.container-lg {
+  width: 1500px;
+}
+
 // hero
 
 .heroSection {
   margin-bottom: 300px;
   h1 {
-    font-size: 14vw;
-    line-height: 11vw;
+    font-size: 9vw;
+    line-height: 9vw;
+    text-transform: uppercase;
+    span {
+      color: v.$highlight;
+    }
   }
 }
 
@@ -37,6 +45,33 @@ body {
       .proImage {
         @include v.bgSize(cover);
       }
+    }
+  }
+}
+
+// About
+
+.textBlock {
+  strong {
+    color: v.$highlight;
+  }
+}
+
+.skill {
+  .skillsHighlight {
+    bottom: 50%;
+    top: 50%;
+  }
+  p {
+    color: v.$black;
+  }
+  &:hover {
+    .skillsHighlight {
+      bottom: 0%;
+      top: 0%;
+    }
+    p {
+      color: v.$white;
     }
   }
 }

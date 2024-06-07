@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"title": {
-				"__TYPE__": "FieldContent",
-				"value": "seven",
-				"type": "Text"
-			},
 			"content": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -72,6 +67,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "dropped",
 				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ex dolore sunt consequat nulla veniam velit consequat dolore enim quis et eu. Laboris culpa eiusmod qui ullamco reprehenderit quis sunt qui incididunt minim magna reprehenderit."
+						}
+					}
+				]
 			}
 		},
 		"items": []
