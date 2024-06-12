@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import "./styles/main.css";
 import { PrismicPreview } from '@prismicio/next'
 import { repositoryName } from '@/prismicio'
 
-const inter = Poppins({ weight : ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] });
+const inter = Outfit({ weight : ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Tyron Hayman | A Frontend Developer",

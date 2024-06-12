@@ -58,7 +58,7 @@ table {
 }
 
 body {
-  background: #0d0d0d;
+  background: #050505;
   overflow-x: hidden;
 }
 
@@ -74,12 +74,12 @@ body {
   margin-bottom: 300px;
 }
 .heroSection h1 {
-  font-size: 9vw;
-  line-height: 9vw;
+  font-size: 8vw;
+  line-height: 8vw;
   text-transform: uppercase;
 }
-.heroSection h1 span {
-  color: #ffbb00;
+.heroSection h1 strong {
+  color: rgb(234, 179, 8);
 }
 
 .workContainerWrap {
@@ -94,7 +94,8 @@ body {
 }
 
 .textBlock strong {
-  color: #ffbb00;
+  color: rgb(234, 179, 8);
+  font-weight: 900;
 }
 
 .skill .skillsHighlight {
@@ -102,7 +103,7 @@ body {
   top: 50%;
 }
 .skill p {
-  color: #0d0d0d;
+  color: #050505;
 }
 .skill:hover .skillsHighlight {
   bottom: 0%;

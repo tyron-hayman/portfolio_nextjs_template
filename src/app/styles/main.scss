@@ -26,10 +26,10 @@ body {
 .heroSection {
   margin-bottom: 300px;
   h1 {
-    font-size: 9vw;
-    line-height: 9vw;
+    font-size: 8vw;
+    line-height: 8vw;
     text-transform: uppercase;
-    span {
+    strong {
       color: v.$highlight;
     }
   }
@@ -54,6 +54,7 @@ body {
 .textBlock {
   strong {
     color: v.$highlight;
+    font-weight: 900;
   }
 }
 

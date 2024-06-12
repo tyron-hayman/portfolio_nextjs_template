@@ -65,11 +65,11 @@ export default function About({ slices }: About) {
   return (
     <section className="aboutSection flex flex-wrap mt-40 justify-center">
       <div className="container-lg" ref={container}>
-        <motion.h2 ref={titleRef} className="text-amber-50 text-1xl font-normal uppercase" initial="initial" variants={showVariant} animate={inView ? "animated" : "initial"}>About Me</motion.h2>
-        <TextBlock content={slices[2].primary.title[0].text} container={container} />
+        <motion.h2 ref={titleRef} className="text-yellow-500 text-1xl font-bold uppercase" initial="initial" variants={showVariant} animate={inView ? "animated" : "initial"}>About Me</motion.h2>
+        <TextBlock content={slices[2].primary.title[0].text} container={container} bold={true} />
       </div>
       <div className="container-lg pt-60 pb-10">
-        <h2 className="text-rose-50 text-1xl uppercase font-normal">
+        <h2 className="text-yellow-500 text-1xl uppercase font-bold">
           I know some things
         </h2>
       </div>
@@ -77,12 +77,12 @@ export default function About({ slices }: About) {
         {skills.map((skill: any, index: number) => {
           return (
             <Skill key={index} variant={showVariant}>
-              <div className="bg-[#ffbb00] absolute transition-all w-full z-[1] block skillsHighlight duration-500"/>
+              <div className="bg-yellow-500 absolute transition-all w-full z-[1] block skillsHighlight duration-500"/>
               <div className="container-lg mx-auto flex justify-between items-center relative z-[2]">
-                <h3 className="text-7xl text-amber-50 font-bold uppercase w-full md:w-7/12">
+                <h3 className="text-5xl text-white font-bold uppercase w-full md:w-6/12">
                   {skill.skill}
                 </h3>
-                <p className="text-sm leading-relaxed text-amber-50 font-bold uppercase w-full md:w-4/12 transition-all duration-500">
+                <p className="text-sm leading-relaxed text-amber-50 font-bold uppercase w-full md:w-5/12 transition-all duration-500">
                   {skill.description}
                 </p>
               </div>
@@ -104,7 +104,7 @@ const Skill = ({ children, variant } : Skill) => {
   const inView = useInView(skillRef, { amount : 0.5, once : true })
   
   return(
-    <motion.div ref={skillRef} initial="initial" variants={variant} animate={inView ? "animated" : "initial"} className="skill py-4 border-gray-50/10 border-solid border-t-[1px] relative">
+    <motion.div ref={skillRef} initial="initial" variants={variant} animate={inView ? "animated" : "initial"} className="skill py-5 border-gray-50/10 border-solid border-t-[1px] relative">
       {children}
     </motion.div>
   )
